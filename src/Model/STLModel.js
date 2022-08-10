@@ -4,10 +4,6 @@ import { STLLoader } from 'three/examples/jsm/loaders/STLLoader';
 import { useLoader, useThree, useFrame } from '@react-three/fiber';
 import { useEffect, useRef } from 'react';
 
-const url = './lever.stl'
-
-
-
 const STLModel = ({ position, file, interact }) => {
     const geometry = useLoader(STLLoader, file)
     // const geometry = new THREE.BoxGeometry(1, 1, 1);
@@ -25,7 +21,6 @@ const STLModel = ({ position, file, interact }) => {
             {...position}
             ref={ref}
             // scale={clicked ? 2.5 : 1}
-            onClick={(event) => click(!clicked)}
             onPointerOver={(event) => hover(true)}
             onPointerOut={(event) => hover(false)}
             geometry={geometry}>

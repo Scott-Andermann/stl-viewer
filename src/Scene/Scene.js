@@ -24,35 +24,39 @@ const Scene = ({ file, setFile }) => {
         setDragActive(false);
         if (e.dataTransfer.files && e.dataTransfer.files[0]) {
             // console.log('file ready for upload');
-            // console.log(e.dataTransfer.files);
-            setFile(URL.createObjectURL(e.dataTransfer.files[0]));
+            console.log(e.dataTransfer.files[0].name);
+            setFile({url: URL.createObjectURL(e.dataTransfer.files[0]), name: e.dataTransfer.files[0].name});
         }
     }
 
-    console.log(dragActive);
+    const resetCamera = () => {
+        
+    }
+
+    // console.log(dragActive);
+    // console.log(file);
 
     return (
         <div>
+            <h2>File Name: {file.name}</h2>
             <Canvas
                 onDragEnter={handleDrag}
                 camera={{ position: [10, 0, 120], fov: 100 }}
                 style={{
-                    backgroundColor: '#111a21',
+                    backgroundColor: '#676f85',
                     width: '80vw',
                     height: '80vh',
                 }}
             >
                 <ambientLight intensity={.75} />
-                {/* <ambientLight intensity={0.1} /> */}
-                {/* <directionalLight intensity={1.5} target-position={[1, 0, 0]}/> */}
-                <directionalLight intensity={1.75} position={[10, 10, 10]} />
-                <pointLight position={[10, 10, 0]} intensity={0.75} />
+                <directionalLight intensity={1.75} position={[10, 20, 10]} />
+                <pointLight position={[20, 10, -10]} intensity={0.75} />
                 <Suspense fallback={null}>
-                    <STLModel file={file} position={[0, 0, 0]} interact={true} />
+                    <STLModel file={file.url} position={[0, 0, 0]} interact={true} />
                 </Suspense>
                 <OrbitControls />
-
             </Canvas>
+            <button onClick={resetCamera}>Reset Camera</button>
             {dragActive && <div id='drag-file-element' onDragEnter={handleDrag} onDragLeave={handleDrag} onDragOver={handleDrag} onDrop={handleDrop} />}
         </div>
     )

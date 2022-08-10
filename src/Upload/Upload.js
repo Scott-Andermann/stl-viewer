@@ -22,7 +22,7 @@ const Upload = ({setFile}) => {
         if (e.dataTransfer.files && e.dataTransfer.files[0]){
             // console.log('file ready for upload');
             // console.log(e.dataTransfer.files);
-            setFile(URL.createObjectURL(e.dataTransfer.files[0]));
+            setFile({url: URL.createObjectURL(e.dataTransfer.files[0]), name: e.dataTransfer.files[0].name});
         }
     }
     
