@@ -19,7 +19,7 @@ function App() {
     setFile(e);
   }
 
-  console.log(fileList);
+  console.log(file);
 
   useEffect(() => {
     if (file !== '') setFileList(prev => prev.findIndex(element => element.name === file.name) === -1 ? [...prev, file] : prev)

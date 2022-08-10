@@ -25,13 +25,22 @@ const Upload = ({setFile}) => {
             setFile({url: URL.createObjectURL(e.dataTransfer.files[0]), name: e.dataTransfer.files[0].name});
         }
     }
-    
-    // console.log(dragActive)
+
+    const handleChange = (e) => {
+        e.preventDefault();
+        console.log(e.target.files);
+        if (e.target.files && e.target.files[0]){
+            // console.log('file ready for upload');
+            // console.log(e.dataTransfer.files);
+            console.log('were in' )
+            setFile({url: URL.createObjectURL(e.target.files[0]), name: e.target.files[0].name});
+        }
+    }
 
     return (
         <form id='upload-form' onDragEnter={handleDrag} onSubmit={(e) => e.preventDefault()}>
-            <input type='file' id='input-upload' multiple={false} />
-            <label id='label-upload' htmlFor='label-upload' className={dragActive ? 'drag-active' : ''}>
+            <input type='file' id='input-upload' multiple={false} onChange={handleChange}/>
+            <label id='label-upload' htmlFor='input-upload' className={dragActive ? 'drag-active' : ''}>
                 <div>
                     <p>Drag and drop your file here or</p>
                     <button className='upload-button'>Upload a file</button>
