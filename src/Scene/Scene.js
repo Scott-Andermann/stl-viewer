@@ -1,8 +1,6 @@
-import React, { Suspense, useEffect, useState } from 'react';
-import * as THREE from 'three';
+import React, { Suspense, useState } from 'react';
 import { Canvas } from '@react-three/fiber';
 import { OrbitControls } from '@react-three/drei';
-import Model from '../Model/Model';
 import STLModel from '../Model/STLModel';
 
 const Scene = ({ file, setFile }) => {
@@ -29,10 +27,6 @@ const Scene = ({ file, setFile }) => {
         }
     }
 
-    const resetCamera = () => {
-        
-    }
-
     // console.log(dragActive);
     // console.log(file);
 
@@ -56,7 +50,6 @@ const Scene = ({ file, setFile }) => {
                 </Suspense>
                 <OrbitControls />
             </Canvas>
-            <button onClick={resetCamera}>Reset Camera</button>
             {dragActive && <div id='drag-file-element' onDragEnter={handleDrag} onDragLeave={handleDrag} onDragOver={handleDrag} onDrop={handleDrop} />}
         </div>
     )

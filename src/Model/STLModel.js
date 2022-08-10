@@ -1,18 +1,16 @@
-import * as THREE from 'three'
+
 import { useState } from 'react';
 import { STLLoader } from 'three/examples/jsm/loaders/STLLoader';
-import { useLoader, useThree, useFrame } from '@react-three/fiber';
-import { useEffect, useRef } from 'react';
+import { useLoader } from '@react-three/fiber';
+import { useRef } from 'react';
 
 const STLModel = ({ position, file, interact }) => {
     const geometry = useLoader(STLLoader, file)
     // const geometry = new THREE.BoxGeometry(1, 1, 1);
-    const wireframeMaterial = new THREE.MeshBasicMaterial({ color: 0x000000, wireframe: true, transparent: true });
 
     const ref = useRef();
 
     const [hovered, hover] = useState(false)
-    const [clicked, click] = useState(false)
 
     // useFrame((state, delta) => (ref.current.rotation.x += 0.01))
 
@@ -25,7 +23,7 @@ const STLModel = ({ position, file, interact }) => {
             onPointerOut={(event) => hover(false)}
             geometry={geometry}>
 
-            <meshStandardMaterial color={interact ? clicked ? 'green' : hovered ? 'purple' : '#696969' : '#696969'} />
+            <meshStandardMaterial color={interact ? hovered ? 'purple' : '#696969' : '#696969'} />
         </mesh>
     )
 }

@@ -1,7 +1,5 @@
 import React, { Suspense } from 'react';
-import * as THREE from 'three';
 import { Canvas } from '@react-three/fiber';
-import Model from '../Model/Model';
 import STLModel from '../Model/STLModel';
 
 const Preview = ({ file, loadElement, setFileList }) => {
@@ -13,7 +11,7 @@ const Preview = ({ file, loadElement, setFileList }) => {
 
     const removeFile = () => {
         // setFileList(prev => prev.filter(element => element !== file))
-        setFileList(prev => prev.filter(element => element.name != file.name))
+        setFileList(prev => prev.filter(element => element.name !== file.name))
         console.log(file);
     }
 
