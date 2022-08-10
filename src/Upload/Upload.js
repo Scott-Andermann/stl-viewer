@@ -1,9 +1,10 @@
-import {useState} from 'react';
+import {useState, useRef} from 'react';
 import './Upload.css'
 
 const Upload = ({setFile}) => {
     const [dragActive, setDragActive] = useState(false);
     
+    const inputRef = useRef(null);
 
     const handleDrag = (e) => {
         e.preventDefault();
@@ -37,13 +38,17 @@ const Upload = ({setFile}) => {
         }
     }
 
+    const onButtonClick = () => {
+        inputRef.current.click();
+    }
+
     return (
         <form id='upload-form' onDragEnter={handleDrag} onSubmit={(e) => e.preventDefault()}>
-            <input type='file' id='input-upload' multiple={false} onChange={handleChange}/>
+            <input ref={inputRef} type='file' id='input-upload' multiple={false} onChange={handleChange}/>
             <label id='label-upload' htmlFor='input-upload' className={dragActive ? 'drag-active' : ''}>
                 <div>
                     <p>Drag and drop your file here or</p>
-                    <button className='upload-button'>Upload a file</button>
+                    <button className='upload-button' onClick={onButtonClick}>Upload a file</button>
                 </div>
             </label>
             {dragActive && <div id='drag-file-element' onDragEnter={handleDrag} onDragLeave={handleDrag} onDragOver={handleDrag} onDrop={handleDrop} />}
