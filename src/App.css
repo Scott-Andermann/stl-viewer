@@ -2,6 +2,12 @@
   text-align: center;
 }
 
+.prev-models {
+  display: flex;
+  width: 90%;
+  justify-content: space-around;
+}
+
 .App-logo {
   height: 40vmin;
   pointer-events: none;
@@ -15,7 +21,6 @@
 
 .App-header {
   background-color: #282c34;
-  min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
