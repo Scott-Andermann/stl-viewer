@@ -1,0 +1,66 @@
+.color-picker {
+    position: absolute !important;
+    top: 8px;
+    right: 8px;
+
+}
+
+.model-window {
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: center;
+    margin: auto;
+    width: 80vw;
+    height: 80vh;
+    margin-bottom: 1rem;
+}
+
+.button-container {
+    position: absolute;
+    bottom: 8px;
+    right: 8px;
+    display: flex;
+    flex-direction: column;
+
+}
+
+.toggle-button {
+    height: 60px;
+    width: 200px;
+    margin-top: 10px;
+    border: 2px solid black;
+    border-radius: 5px;
+    font-size: 20px;
+    font-weight: bold;
+    background-color: #f8fafc;
+}
+
+.toggle-button:hover {
+    box-shadow: inset 0 0 3px black;
+}
+
+.toggle-button:active {
+    box-shadow: inset 0 0 15px black;
+}
+
+
+@media only screen and (max-width: 1000px) {
+    .color-picker {
+        position: relative !important;
+        bottom: 0px;
+        top: auto;
+        left: auto;
+        margin-bottom: 2rem;
+    }
+
+    .button-container {
+        position: relative;
+        margin-bottom: 2rem;
+    }
+
+    .model-window {
+        height: 100%;
+    }
+}

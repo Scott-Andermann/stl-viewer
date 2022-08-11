@@ -4,8 +4,13 @@
 
 .prev-models {
   display: flex;
-  width: 90%;
-  justify-content: space-around;
+  flex-wrap: wrap;
+  margin: auto;
+  width: 80vw;
+  justify-content: left;
+  border: 2px #cbd5e1 dashed;
+  border-radius: 1rem;
+
 }
 
 .App-logo {
