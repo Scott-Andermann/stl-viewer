@@ -1,8 +1,10 @@
-import React, { Suspense } from 'react';
+import React, { Suspense, useState } from 'react';
 import { Canvas } from '@react-three/fiber';
 import STLModel from '../Model/STLModel';
 
 const Preview = ({ file, loadElement, setFileList }) => {
+
+    const [zPosition, setZPosition] = useState(100);
 
     const onClick = () => {
         // console.log(file);
@@ -19,7 +21,7 @@ const Preview = ({ file, loadElement, setFileList }) => {
         <div>
         <Canvas
             onClick={onClick}
-            camera={{ position: [0, 10, 100], fov: 100 }}
+            camera={{ position: [0, 10, zPosition], fov: 100 }}
             style={{
                 backgroundColor: '#676f85',
                 width: '150px',
@@ -30,7 +32,7 @@ const Preview = ({ file, loadElement, setFileList }) => {
             <directionalLight intensity={1.5} position={[10, 10, 10]} />
             <pointLight position={[10, 10, 0]} intensity={0.5} />
             <Suspense fallback={null}>
-                <STLModel file={file.url} position={[0.025, -0.9, 0]} interact={false} />
+                <STLModel file={file} color={'#696969'} setZPosition={setZPosition}/>
             </Suspense>
         </Canvas>
         <button onClick={removeFile}>Remove</button>

@@ -22,7 +22,7 @@ const Upload = ({setFile}) => {
         setDragActive(false);
         if (e.dataTransfer.files && e.dataTransfer.files[0]){
             // console.log('file ready for upload');
-            // console.log(e.dataTransfer.files);
+            console.log(e.dataTransfer.files);
             setFile({url: URL.createObjectURL(e.dataTransfer.files[0]), name: e.dataTransfer.files[0].name});
         }
     }
@@ -31,9 +31,6 @@ const Upload = ({setFile}) => {
         e.preventDefault();
         console.log(e.target.files);
         if (e.target.files && e.target.files[0]){
-            // console.log('file ready for upload');
-            // console.log(e.dataTransfer.files);
-            console.log('were in' )
             setFile({url: URL.createObjectURL(e.target.files[0]), name: e.target.files[0].name});
         }
     }
