@@ -5,10 +5,9 @@ import { useRef, useState, useEffect } from 'react';
 
 const STLModel = ({ file, color, newModel }) => {
     const [init, setInit] = useState(true);
-    const [zPosition, setZPosition] = useState(0);
     const ref = useRef();
     const vec = new THREE.Vector3();
-    const {camera, mouse } = useThree();
+    const {camera } = useThree();
 
 
 
@@ -23,7 +22,7 @@ const STLModel = ({ file, color, newModel }) => {
         if(newModel) {
             geometry.rotateX(-Math.PI / 2)
         }
-    }, [geometry])
+    }, [geometry, newModel])
 
 
     useFrame(() => {

@@ -32,7 +32,7 @@ const Preview = ({ file, loadElement, setFileList }) => {
                 <directionalLight intensity={1.5} position={[10, 10, 10]} />
                 <pointLight position={[10, 10, 0]} intensity={0.5} />
                 <Suspense fallback={null}>
-                    <STLModel file={file} color={'#696969'} />
+                    <STLModel file={file} color={'#696969'} newModel={false}/>
                 </Suspense>
             </Canvas>
             <p>{file.name}</p>
