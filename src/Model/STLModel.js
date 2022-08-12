@@ -1,15 +1,48 @@
 import * as THREE from 'three';
 import { STLLoader } from 'three/examples/jsm/loaders/STLLoader';
-import { useLoader } from '@react-three/fiber';
-import { useRef } from 'react';
+import { useLoader, useFrame, useThree } from '@react-three/fiber';
+import { useRef, useState, useEffect } from 'react';
 
-const STLModel = ({ file, color}) => {
-    const geometry = useLoader(STLLoader, file.url)
+const STLModel = ({ file, color, newModel }) => {
+    const [init, setInit] = useState(true);
+    const [zPosition, setZPosition] = useState(0);
+    const ref = useRef();
+    const vec = new THREE.Vector3();
+    const {camera, mouse } = useThree();
+
+
+
+    
+    const geometry = useLoader(STLLoader, file.url);
+    useEffect(() => {
+
+        // setZPosition(Math.max(geometry.boundingBox.max.x, geometry.boundingBox.max.y, geometry.boundingBox.max.z) * 1.25);
+        // console.log(zPosition);
+        setInit(true);
+        // console.log(typeof geometry);
+        if(newModel) {
+            geometry.rotateX(-Math.PI / 2)
+        }
+    }, [geometry])
+
+
+    useFrame(() => {
+        if (init) {
+            camera.position.lerp(vec.set(150, 100, 150), 1);
+            setTimeout(() => setInit(false), 500);
+            // console.log('test')
+            // setInit(false);
+        }
+    })
+
+
 
     // set initial position
     var middle = new THREE.Vector3();
     geometry.computeBoundingBox();
     geometry.boundingBox.getCenter(middle);
+    // console.log(typeof geometry);
+
 
     const position = {position: [-middle.x, -middle.y, -middle.z]}
 
@@ -17,7 +50,7 @@ const STLModel = ({ file, color}) => {
     // const scale = 200 / Math.max(geometry.boundingBox.max.x, geometry.boundingBox.max.y, geometry.boundingBox.max.z);
     // const position = {position: [-middle.x * scale, -middle.y * scale, -middle.z * scale]}
 
-    const ref = useRef();
+
 
     // const [hovered, hover] = useState(false)
 

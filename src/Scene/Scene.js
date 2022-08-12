@@ -8,7 +8,7 @@ import './Scene.css'
 
 
 
-const Scene = ({ file, setFile, color, setColor, handleDrag, handleDrop, dragActive}) => {
+const Scene = ({ file, setFile, color, setColor, handleDrag, handleDrop, dragActive, newModel}) => {
 
     const [rotate, setRotate] = useState(false)
 
@@ -26,7 +26,7 @@ const Scene = ({ file, setFile, color, setColor, handleDrag, handleDrop, dragAct
             <div className='model-window'>
             <Canvas
                 onDragEnter={handleDrag}
-                camera={{ position: [60, 20, 100], fov: 50 }}
+                camera={{ position: [0,0,0], fov: 50 }}
                 style={{
                     backgroundColor: '',
                     width: '80vw',
@@ -39,8 +39,9 @@ const Scene = ({ file, setFile, color, setColor, handleDrag, handleDrop, dragAct
                 <ambientLight />
                 <directionalLight intensity={1.75} position={[10, 20, 10]} />
                 <pointLight position={[20, -10, -10]} intensity={0.75} />
+                {/* <hemisphereLight /> */}
                 <Suspense fallback={null}>
-                    <STLModel file={file} color={color} />
+                    <STLModel file={file} color={color} newModel={newModel}/>
                     {/* Boxes can show origin at intersection of points <Box />
                     <Box2 /> */}
                 </Suspense>

@@ -17,6 +17,7 @@
 
 .preview {
     margin: 20px 20px;
+    width: 180px;
     border: 2px #cbd5e1 dashed;
     border-radius: 1rem;
     padding: 15px;

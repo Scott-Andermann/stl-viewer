@@ -9,11 +9,13 @@ function App() {
   const [fileList, setFileList] = useState([]);  //array of objects
   const [color, setColor] = useState('#696969');
   const [dragActive, setDragActive] = useState(false);
+  const [newModel, setNewModel] = useState(true);
 
 
 
   const loadElement = (e) => {
     setFile(e);
+    setNewModel(false)
   }
 
   useEffect(() => {
@@ -35,8 +37,10 @@ function App() {
     e.stopPropagation();
     setDragActive(false);
     if (e.dataTransfer.files && e.dataTransfer.files[0]) {
-      if (e.dataTransfer.files[0].name.slice(-3) === 'stl')
+      if (e.dataTransfer.files[0].name.slice(-3) === 'stl') {
         setFile({ url: URL.createObjectURL(e.dataTransfer.files[0]), name: e.dataTransfer.files[0].name });
+        setNewModel(true);
+      }
       else alert('Please upload a valid STL file')
     }
   }
@@ -45,9 +49,9 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <h1>STL viewer App</h1>
+        <h1>Online STL Viewer</h1>
       </header>
-      {file && <Scene setFile={setFile} file={file} color={color} setColor={setColor} handleDrag={handleDrag} handleDrop={handleDrop} dragActive={dragActive} />}
+      {file && <Scene setFile={setFile} file={file} color={color} setColor={setColor} handleDrag={handleDrag} handleDrop={handleDrop} dragActive={dragActive} newModel={newModel} />}
       {file ? <></> : <Upload setFile={setFile} handleDrag={handleDrag} handleDrop={handleDrop} dragActive={dragActive} />}
 
       {fileList.length > 0 && <h2>Loaded Models</h2>}
