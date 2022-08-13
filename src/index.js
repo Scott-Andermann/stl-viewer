@@ -11,9 +11,6 @@ import ViewModel from './ViewModel/ViewModel';
 import Search from './routes/Search';
 import Header from './Header/Header';
 
-const config = require('./config');
-
-
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <BrowserRouter>

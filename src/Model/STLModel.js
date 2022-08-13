@@ -1,7 +1,7 @@
 import * as THREE from 'three';
 import { STLLoader } from 'three/examples/jsm/loaders/STLLoader';
 import { useLoader, useFrame, useThree } from '@react-three/fiber';
-import { useRef, useState, useEffect } from 'react';
+import { useRef, useEffect } from 'react';
 
 const STLModel = ({ file, color, newModel, init, setInit }) => {
     // const [init, setInit] = useState(true);
@@ -22,7 +22,7 @@ const STLModel = ({ file, color, newModel, init, setInit }) => {
         if(newModel) {
             geometry.rotateX(-Math.PI / 2)
         }
-    }, [geometry, newModel])
+    }, [geometry, newModel, setInit])
 
 
     useFrame(() => {

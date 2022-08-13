@@ -52,8 +52,8 @@ const Search = () => {
                     {data.length > 0 && data.map(element => <tr>
                         <td>{element.name}</td>
                         <td>{element.creator.name}</td>
-                        <td><a href={element.public_url} target='_blank'>link</a></td>
-                        <td><img src={element.preview_image} /></td>
+                        <td><a href={element.public_url} target='_blank' rel='noreferrer'>link</a></td>
+                        <td><img src={element.preview_image} alt='preview iamge'/></td>
                     </tr>)}
                 </thead>
             </table>
