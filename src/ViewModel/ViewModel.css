@@ -1,5 +1,16 @@
-.App {
+.Home {
   text-align: center;
+}
+
+.header-link {
+  color: white;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.header-link:hover {
+  color: rgb(152, 152, 213);
+
 }
 
 .prev-models {
@@ -13,7 +24,7 @@
 
 }
 
-.App-logo {
+.Home-logo {
   height: 40vmin;
   pointer-events: none;
 }
@@ -24,7 +35,7 @@
   }
 }
 
-.App-header {
+.Home-header {
   background-color: #282c34;
   display: flex;
   flex-direction: column;
@@ -34,15 +45,8 @@
   color: white;
 }
 
-.App-link {
+.Home-link {
   color: #61dafb;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
+

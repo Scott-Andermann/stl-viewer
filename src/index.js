@@ -1,14 +1,31 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
-import App from './App';
 import reportWebVitals from './reportWebVitals';
+import {
+  BrowserRouter,
+  Routes,
+  Route
+} from 'react-router-dom';
+import ViewModel from './ViewModel/ViewModel';
+import Search from './routes/Search';
+import Header from './Header/Header';
+
+const config = require('./config');
+
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>
+  <BrowserRouter>
+    <React.StrictMode>
+      <Header />
+      <Routes>
+        <Route path='/' element={<ViewModel />} />
+        {/* <Route path='/callback' element={OAuthPopup} /> */}
+        <Route path='/Search' element={<Search />} />
+      </Routes>
+    </React.StrictMode>
+  </BrowserRouter>
 );
 
 // If you want to start measuring performance in your app, pass a function

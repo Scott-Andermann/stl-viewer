@@ -11,6 +11,7 @@ import './Scene.css'
 const Scene = ({ file, setFile, color, setColor, handleDrag, handleDrop, dragActive, newModel}) => {
 
     const [rotate, setRotate] = useState(false)
+    const [init, setInit] = useState(true);
 
     const handleRotate = () => {
         setRotate(!rotate);
@@ -19,6 +20,10 @@ const Scene = ({ file, setFile, color, setColor, handleDrag, handleDrop, dragAct
     const onClick = () => {
         setFile('');
       }
+
+    const resetView = () => {
+        setInit(true);
+    }
 
     return (
         <div>
@@ -41,7 +46,7 @@ const Scene = ({ file, setFile, color, setColor, handleDrag, handleDrop, dragAct
                 <pointLight position={[20, -10, -10]} intensity={0.75} />
                 {/* <hemisphereLight /> */}
                 <Suspense fallback={null}>
-                    <STLModel file={file} color={color} newModel={newModel}/>
+                    <STLModel file={file} color={color} newModel={newModel} init={init} setInit={setInit}/>
                     {/* Boxes can show origin at intersection of points <Box />
                     <Box2 /> */}
                 </Suspense>
@@ -49,6 +54,8 @@ const Scene = ({ file, setFile, color, setColor, handleDrag, handleDrop, dragAct
             </Canvas>
             <HexColorPicker className='color-picker' color={color} onChange={setColor} />
             <div className='button-container'>
+                
+                <button className='toggle-button' onClick={resetView}>Reset Camera</button>
                 <button className='toggle-button' onClick={handleRotate}>Toggle Auto Rotate</button>
                 <button className='toggle-button' onClick={onClick}>Upload a new file</button>
             </div>

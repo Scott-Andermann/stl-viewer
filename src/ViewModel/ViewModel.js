@@ -1,10 +1,10 @@
 import { useEffect, useState } from 'react';
-import './App.css';
-import Scene from './Scene/Scene';
-import Upload from './Upload/Upload';
-import Preview from './Preview/Preview';
+import './ViewModel.css';
+import Scene from '../Scene/Scene';
+import Upload from '../Upload/Upload';
+import Preview from '../Preview/Preview';
 
-function App() {
+function ViewModel() {
   const [file, setFile] = useState(''); // set to empty string for full functionality
   const [fileList, setFileList] = useState([]);  //array of objects
   const [color, setColor] = useState('#696969');
@@ -47,10 +47,7 @@ function App() {
 
   // arr.findIndex(element => element.name === 'string 3'))
   return (
-    <div className="App">
-      <header className="App-header">
-        <h1>Online STL Viewer</h1>
-      </header>
+    <div className="ViewModel">
       {file && <Scene setFile={setFile} file={file} color={color} setColor={setColor} handleDrag={handleDrag} handleDrop={handleDrop} dragActive={dragActive} newModel={newModel} />}
       {file ? <></> : <Upload setFile={setFile} handleDrag={handleDrag} handleDrop={handleDrop} dragActive={dragActive} />}
 
@@ -64,4 +61,4 @@ function App() {
   );
 }
 
-export default App;
+export default ViewModel;

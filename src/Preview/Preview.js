@@ -1,9 +1,10 @@
-import React, { Suspense } from 'react';
+import React, { Suspense, useState } from 'react';
 import { Canvas } from '@react-three/fiber';
 import STLModel from '../Model/STLModel';
 import './Preview.css';
 
 const Preview = ({ file, loadElement, setFileList }) => {
+    const [init, setInit] = useState(true);
 
     const onClick = () => {
         // console.log(file);
@@ -32,7 +33,7 @@ const Preview = ({ file, loadElement, setFileList }) => {
                 <directionalLight intensity={1.5} position={[10, 10, 10]} />
                 <pointLight position={[10, 10, 0]} intensity={0.5} />
                 <Suspense fallback={null}>
-                    <STLModel file={file} color={'#696969'} newModel={false}/>
+                    <STLModel file={file} color={'#696969'} newModel={false} init={init} setInit={setInit}/>
                 </Suspense>
             </Canvas>
             <p>{file.name}</p>

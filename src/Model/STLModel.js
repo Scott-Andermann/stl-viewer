@@ -3,8 +3,8 @@ import { STLLoader } from 'three/examples/jsm/loaders/STLLoader';
 import { useLoader, useFrame, useThree } from '@react-three/fiber';
 import { useRef, useState, useEffect } from 'react';
 
-const STLModel = ({ file, color, newModel }) => {
-    const [init, setInit] = useState(true);
+const STLModel = ({ file, color, newModel, init, setInit }) => {
+    // const [init, setInit] = useState(true);
     const ref = useRef();
     const vec = new THREE.Vector3();
     const {camera } = useThree();
@@ -27,7 +27,7 @@ const STLModel = ({ file, color, newModel }) => {
 
     useFrame(() => {
         if (init) {
-            camera.position.lerp(vec.set(150, 100, 150), 1);
+            camera.position.lerp(vec.set(150, 100, 150), 0.25);
             setTimeout(() => setInit(false), 500);
             // console.log('test')
             // setInit(false);
@@ -40,9 +40,6 @@ const STLModel = ({ file, color, newModel }) => {
     var middle = new THREE.Vector3();
     geometry.computeBoundingBox();
     geometry.boundingBox.getCenter(middle);
-    // console.log(typeof geometry);
-
-
     const position = {position: [-middle.x, -middle.y, -middle.z]}
 
     // want to add auto-scaling so that the model displays at an appropriate size on load
