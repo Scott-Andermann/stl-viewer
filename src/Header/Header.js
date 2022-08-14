@@ -6,9 +6,9 @@ export default function Header() {
     return (
         <div>
             <header className="Header">
-                <h1>Online STL Viewer</h1>
+                <h1>Look STL</h1>
                 <nav>
-                    <Link className='header-link' to='/'>STL Viewer</Link>
+                    <Link className='header-link' to='/'>Viewer</Link>
                     <Link className='header-link' to='/Search'>Find a Model</Link>
                 </nav>
             </header>

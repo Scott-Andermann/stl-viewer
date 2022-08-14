@@ -1,5 +1,7 @@
 import {useState} from 'react';
 import SearchBar from '../Search/SearchBar';
+import DataTable from '../DataTable/DataTable';
+
 
 
 const Search = () => {
@@ -34,29 +36,9 @@ const Search = () => {
 
     return (
         <main>
-            <h2>Search</h2>
-            <SearchBar searchTerm={searchTerm} setSearchTerm={setSearchTerm} setPage={setPage}/>
-            <button onClick={fetchSearch}>Search</button>
+            <SearchBar searchTerm={searchTerm} setSearchTerm={setSearchTerm} setPage={setPage} fetchSearch={fetchSearch}/>
             {/* <button onClick={fetchPopular}>Show Popular Things</button> */}
-
-
-            {/* need search bar, results table and pagination function */}
-            <table>
-                <thead>
-                    <tr>
-                        <td>Name</td>
-                        <td>Creator</td>
-                        <td>Thingiverse Link</td>
-                        <td>Preview</td>
-                    </tr>
-                    {data.length > 0 && data.map(element => <tr>
-                        <td>{element.name}</td>
-                        <td>{element.creator.name}</td>
-                        <td><a href={element.public_url} target='_blank' rel='noreferrer'>link</a></td>
-                        <td><img src={element.preview_image} alt='preview iamge'/></td>
-                    </tr>)}
-                </thead>
-            </table>
+            {data.length > 0 && <DataTable data={data} />}
             {data.length > 0 && <button onClick={fetchSearch}>Load more results</button>}
         </main>
     )
